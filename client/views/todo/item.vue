@@ -72,10 +72,10 @@ export default {
   cursor: pointer;
 
   &:after {
-    content: url('../assets/img/round.svg');
+    content: url('../../assets/img/round.svg');
   }
   &:checked:after {
-    content: url('../assets/img/done.svg');
+    content: url('../../assets/img/done.svg');
   }
 }
 
