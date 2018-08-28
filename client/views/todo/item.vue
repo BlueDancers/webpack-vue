@@ -14,12 +14,12 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {}
   },
   methods: {
-    deletetodo() {
-      this.$emit('del',this.todo.id)
+    deletetodo () {
+      this.$emit('del', this.todo.id)
     }
   }
 }

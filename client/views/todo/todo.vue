@@ -19,27 +19,25 @@ export default {
     item,
     tabs
   },
-  data() {
+  data () {
     return {
       todos: [],
-      filter: '全部',
-      todos: []
+      filter: '全部'
     }
   },
   computed: {
-    filteredTodos() {
-      console.log(this.filter)
+    filteredTodos () {
       if (this.filter === '全部') {
         return this.todos
       } else if (this.filter === '代做事项') {
-        return this.todos.filter(todo => todo.completed == false)
+        return this.todos.filter(todo => todo.completed === false)
       } else if (this.filter === '完成事项') {
-        return this.todos.filter(todo => todo.completed == true)
+        return this.todos.filter(todo => todo.completed === true)
       }
     }
   },
   methods: {
-    addTodo(e) {
+    addTodo (e) {
       this.todos.unshift({
         id: id++,
         content: e.target.value.trim(),
@@ -47,13 +45,13 @@ export default {
       })
       e.target.value = ''
     },
-    deletetodo(id) {
+    deletetodo (id) {
       this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
     },
-    toggle(state) {
+    toggle (state) {
       this.filter = state
     },
-    clearAllCompleted() {
+    clearAllCompleted () {
       this.todos = this.todos.filter(todo => {
         return todo.completed === false
       })

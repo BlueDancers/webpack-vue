@@ -8,21 +8,23 @@
 </template>
 
 <script>
-import headers from '../src/views/layout/header.vue'
-import todo from '../src/views/todo/todo.vue'
-import footers from '../src/views/layout/footer.jsx'
+import headers from './views/layout/header.vue'
+import todo from './views/todo/todo.vue'
+import footers from './views/layout/footer.jsx'
+
 export default {
   components: {
     headers,
     footers,
     todo
   },
-  data() {
+  data () {
     return {
       data: 'vue'
     }
   }
 }
+console.log(headers)
 </script>
 <style lang="stylus" scoped>
 #app {

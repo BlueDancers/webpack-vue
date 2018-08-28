@@ -1,14 +1,14 @@
-import "../../assets/style/footer.styl";
+import '../../assets/style/footer.styl'
 export default {
-  data (){
+  data () {
     return {
       name: 'vkcyan'
     }
   },
-  render() {
+  render () {
     return (
       <div id="footer">
-        <span>Writter { this.name }</span>
+        <span>Writter {this.name}</span>
       </div>
     )
   }

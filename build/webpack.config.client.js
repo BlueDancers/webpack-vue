@@ -39,7 +39,7 @@ if (isDev) {
       rules: [{
         test: /\.styl(us)?$/,
         use: [
-          'style-loader',
+          'vue-style-loader',
           'css-loader',
           {
             loader: 'postcss-loader',

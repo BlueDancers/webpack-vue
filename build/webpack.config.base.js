@@ -1,5 +1,7 @@
 const path = require('path')
-
+//vue-loader的配置
+const createVueLoderOptions = require('./vue-loader.config')
+const docsLoader = require.resolve('./docs-loader')
 const isDev = process.env.NODE_ENV === 'development'
 //process 可以读取换变量
 
@@ -13,8 +15,23 @@ const config = {
   },
   module: {
     rules: [{
+        test: /\.(vue|js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude:/node_modules/,
+        enforce: 'pre'     //预处理
+      },
+      {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            'docs': docsLoader
+          },
+          cssModules: {
+            localIdentName: '[path][name]---[local]---[hash:base64:5]',
+            camelCase: true
+          }
+        }
       },
       {
         test: /\.jsx$/,
