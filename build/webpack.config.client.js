@@ -5,16 +5,16 @@ const {
 const HTMLplugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const ExtractPlugin = require('extract-text-webpack-plugin')
-//使用merge来合并webpack配置
+// 使用merge来合并webpack配置
 const merge = require('webpack-merge')
 const baseconfig = require('./webpack.config.base')
 const isDev = process.env.NODE_ENV === 'development'
-//process 可以读取换变量
+// process可以读取换变量
 
 const devServer = {
   port: '8000',
   host: '127.0.0.1',
-  overlay: { //配置错误
+  overlay: { // 配置错误
     errors: true
   },
   hot: true
@@ -27,11 +27,11 @@ const defaultPlugins = [
     }
   }),
   new VueLoaderPlugin(),
-  new HTMLplugin(),
+  new HTMLplugin()
 
 ]
 
-let config //配置文件 用于合并
+let config // 配置文件 用于合并
 
 if (isDev) {
   config = merge(baseconfig, {
@@ -46,7 +46,7 @@ if (isDev) {
             options: {
               sourceMap: true
             }
-            //选项的作用使用来提高效率的。
+            // 选项的作用使用来提高效率的。
           },
           'stylus-loader'
         ]
@@ -58,10 +58,10 @@ if (isDev) {
     ])
   })
 } else {
-  //正式环境
+  // 正式环境
   config = merge(baseconfig, {
     entry: {
-      app: path.join(__dirname, '../client/index.js'),
+      app: path.join(__dirname, '../client/index.js')
     },
     output: {
       filename: '[name].[chunkhash:8].js'
@@ -106,7 +106,7 @@ if (isDev) {
       runtimeChunk: true
     },
     plugins: defaultPlugins.concat([
-      new ExtractPlugin('style.[chunkhash:8].css'),
+      new ExtractPlugin('style.[chunkhash:8].css')
     ])
   })
 }
