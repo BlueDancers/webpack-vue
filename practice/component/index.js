@@ -1,1 +1,1 @@
-import './define'
+import './render'

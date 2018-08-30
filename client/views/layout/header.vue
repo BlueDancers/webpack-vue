@@ -1,14 +1,12 @@
 <template>
-    <header :class="$style.red">
+    <header class="mainheader">
         <h1>TodoAPP</h1>
     </header>
 </template>
 
 <script>
 export default {
-  created () {
-    console.log(this.$style)
-  }
+  created () {}
 }
 </script>
 

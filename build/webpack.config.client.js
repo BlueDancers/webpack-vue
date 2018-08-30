@@ -17,7 +17,9 @@ const devServer = {
   overlay: { // 配置错误
     errors: true
   },
-  hot: true
+  hot: true,
+  historyApiFallback: true,
+  publicPath: '/'
 }
 
 const defaultPlugins = [
@@ -27,7 +29,9 @@ const defaultPlugins = [
     }
   }),
   new VueLoaderPlugin(),
-  new HTMLplugin()
+  new HTMLplugin({
+    template: './template.html'
+  })
 
 ]
 

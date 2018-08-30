@@ -15,6 +15,22 @@ import item from './item.vue'
 import tabs from './tabs.vue'
 let id = 0
 export default {
+  beforeRouteEnter (to, from, next) {
+    console.log('todo的守卫开始了')
+    next(vm => {
+      console.log('获取data数据 filter', vm.filter)
+    })
+  },
+  beforeRouteUpdate (to, from, next) {
+    console.log('todo的守卫更新了')
+    next()
+  },
+  beforeRouteLeave (to, from, next) {
+    console.log('todo的守卫离开了')
+    if (window.confirm('真的真的退出吗')) {
+      next()
+    } else {}
+  },
   components: {
     item,
     tabs

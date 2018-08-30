@@ -2,29 +2,36 @@
   <div id="app">
     <div id="cover"></div>
     <headers></headers>
-    <todo></todo>
+    <router-link to="/app/12"> app </router-link>
+    <router-link to="/login"> login </router-link>
+
+    <router-link to="/app/123"> exact </router-link>
+    <transition name="fade">
+      <router-view />
+    </transition>
     <footers></footers>
   </div>
 </template>
 
 <script>
 import headers from './views/layout/header.vue'
-import todo from './views/todo/todo.vue'
 import footers from './views/layout/footer.jsx'
 
 export default {
+
   components: {
     headers,
-    footers,
-    todo
+    footers
   },
   data () {
     return {
       data: 'vue'
     }
+  },
+  mounted () {
+    console.log(this.$route)
   }
 }
-console.log(headers)
 </script>
 <style lang="stylus" scoped>
 #app {
