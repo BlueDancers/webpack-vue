@@ -8,6 +8,8 @@ const ExtractPlugin = require('extract-text-webpack-plugin')
 // 使用merge来合并webpack配置
 const merge = require('webpack-merge')
 const baseconfig = require('./webpack.config.base')
+const VueClientPlugins = require('vue-server-renderer/client-plugin')
+
 const isDev = process.env.NODE_ENV === 'development'
 // process可以读取换变量
 
@@ -31,8 +33,8 @@ const defaultPlugins = [
   new VueLoaderPlugin(),
   new HTMLplugin({
     template: './template.html'
-  })
-
+  }),
+  new VueClientPlugins() // vue-ssr-client-manifest.json 生成的文件名
 ]
 
 let config // 配置文件 用于合并
