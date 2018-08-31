@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import App from './app.vue'
 import VueRouter from 'vue-router'
-
+import Vuex from 'vuex'
 import './assets/style/global.styl'
 import createRouter from './config/router'
-import store from './store/store'
+import createstore from './store/store'
 
 Vue.use(VueRouter)
+Vue.use(Vuex)
+
 const router = createRouter()
+const store = createstore()
 
 new Vue({
   el: '#root',

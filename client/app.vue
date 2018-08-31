@@ -2,6 +2,8 @@
   <div id="app">
     <div id="cover"></div>
     <headers></headers>
+    {{ counter }}
+    {{ fullName }}
     <router-link to="/app/12"> app </router-link>
     <router-link to="/login"> login </router-link>
 
@@ -9,6 +11,7 @@
     <transition name="fade">
       <router-view />
     </transition>
+
     <footers></footers>
   </div>
 </template>
@@ -16,6 +19,7 @@
 <script>
 import headers from './views/layout/header.vue'
 import footers from './views/layout/footer.jsx'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
 
@@ -29,7 +33,36 @@ export default {
     }
   },
   mounted () {
-    console.log(this.$route)
+    // let i = 1
+    setInterval(() => {
+      // this.updateCount(i++)
+      this.updateCountSync({
+        num: 1,
+        time: 1000
+      })
+    }, 2000)
+  },
+  computed: {
+    ...mapState({
+      counter: (state) => {
+        return state.count
+      },
+      textA: state => state.a.text
+    }),
+    // count () {
+    //   return this.$store.state.count
+    // },
+    ...mapGetters({
+      'fullName': 'fullName',
+      'textPlus': 'a/textPlus'
+    })
+    // fullName () {
+    //   return this.$store.getters.fullName
+    // }
+  },
+  methods: {
+    ...mapActions(['updateCountSync', 'a/add']),
+    ...mapMutations(['updateCount', 'a/updateText'])
   }
 }
 </script>
